@@ -1,16 +1,15 @@
 const fs = require("fs");
 const util = require("util");
 const inquirer = require("inquirer");
-const generateMarkdown = require("./utils/generateMarkdown")
-// const axios = require("axios")
-// const api = require("./utils/api.js");
+const generateMarkdown = require("./utils/generateMarkdown");
+const api = require("./utils/api");
 
 const questions = [
     "What is the title of your project?",
     "Please describe your project.",
     "Please provide installation instructions.",
     "Please provide usage instructions.",
-    "what licenses should be associated with this project?",
+    "What licenses should be associated with this project? Only chose ONE",
     "Please provide contribution guidelines.",
     "Please provide testing instructions.",
     "What email should people contact you at for questions?",
@@ -42,15 +41,9 @@ async function init(){
         const { license } = await inquirer.prompt({
             type: "checkbox",
             message: questions[4],
-            choices:[],
+            choices:['MIT License','Apache 2.0 License', 'GNU GPL v3'],
             name: "license"
         });
-        // {
-        //     type: "checkbox",
-        //     message: "What languages do you know?",
-        //     choices:['HTML','CSS','JS','MySQL'],
-        //     name: "userLanguages"
-        //   }
         const { contribution } = await inquirer.prompt({
             message: questions[5],
             name: "contribution"
@@ -69,8 +62,19 @@ async function init(){
         });
     
         console.log(title, description, installation, usage, license, contribution, testing, username, email)
-
-        await writeFileAsync('generatedREADME.md', generateMarkdown(title, description, installation, usage, license, contribution, testing, username, email))
+        // const avatarURL = api(username);
+        // await api(username)
+        let licenseBadge = ''
+        if (license === 'MIT License'){
+            licenseBadge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+        } else if (license === 'Apache 2.0 License'){
+            licenseBadge = '  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
+        } else if (license === 'GNU GPL v3'){
+            licenseBadge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
+        } else {
+            licenseBadge = ''
+        }
+        await writeFileAsync('generatedREADME.md', generateMarkdown(title, licenseBadge, description, installation, usage, license, contribution, testing, username, email, api(username)))
 
     } catch (err) {
         // log the error in case something goes wrong

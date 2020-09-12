@@ -1,8 +1,9 @@
 
-  # Title: Sample Title
+  # Title: Title
+  
   
   ## Description
-  description wahoo
+  des
   
   ## Table of Contents
   
@@ -16,30 +17,32 @@
   <a name="installation"></a>
   ## 1. Installation
   
-  instal!
+  inst
 
   <a name="usage"></a>
   ## 2. Usage tips
   
-  use it
+  use
   
   <a name="license"></a>
   ## 3. License
   
-  
+  MIT License
   
   <a name="contributing"></a>
   ## 4. Contributing
   
-  don't!
+  cont
   
   <a name="Tests"></a>
   ## 5. Tests
   
-  request it!
+  test
   
   <a name="Questions"></a>
   ## 6. Questions
   
-  if you have any questions about the rep, open an issue or contact me directly at myemail@email. You can find more of my work at bscott95
+  if you have any questions about the rep, open an issue or contact me directly at as. You can find more of my work at Bscott95
+
+  <img src="[object Promise]" alt="profile picture associated with username">
   

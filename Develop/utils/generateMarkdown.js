@@ -1,6 +1,7 @@
-function generateMarkdown(title, description, installation, usage, license, contribution, testing, username, email) {
+function generateMarkdown(title, licenseBadge, description, installation, usage, license, contribution, testing, username, email, avatarURL) {
   const readmeText = `
   # Title: ${title}
+  ${licenseBadge}
   
   ## Description
   ${description}
@@ -43,6 +44,8 @@ function generateMarkdown(title, description, installation, usage, license, cont
   ## 6. Questions
   
   if you have any questions about the rep, open an issue or contact me directly at ${email}. You can find more of my work at ${username}
+
+  <img src="${avatarURL}" alt="profile picture associated with username">
   `
   return readmeText
 
