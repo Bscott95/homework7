@@ -1,45 +1,74 @@
-const api = require("./api.js");
+// const api = require("./utils/api.js");
 const fs = require("fs");
 const util = require("util");
 const inquirer = require("inquirer");
+const axios = require("axios")
 
 
 const questions = [
-    // what is this for? They provided along with the api.js and generate Markdown.js files
+    "What is the title of your project?",
+    "Please describe your project.",
+    "Please provide installation instructions.",
+    "please provide usage instructions.",
+    "please provide contribution guidelines.",
+    "please provide testing instructions."
 ];
 
 // can use for writing files
 const writeFileAsync = util.promisify(fs.writeFile);
 
-
 // inquirer prompt about username
-inquirer
-  .prompt({
-    message: "Enter your GitHub username",
-    name: "username"
-  })
-  .then(async ({ username }) => {
-    const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+async function main(){
     try {
-      const { data } = await axios.get(queryUrl);
-      console.log(data)
-      const repoNames = data.map(repo => repo.name).join('\n');
-      console.log(repoNames);
-      //       fs.writeFileSync('repos.txt', repoNames);
-      fs.writeFile('repos.txt',repoNames, err => {
-        if (err) {
-          return console.log(err);
-        }
-      })
+        const { title } = await inquirer.prompt({
+            message: questions[0],
+            name: "title"
+        });
+        const { description } = await inquirer.prompt({
+            message: questions[1],
+            name: "description"
+        });
+        const { installation } = await inquirer.prompt({
+            message: questions[2],
+            name: "installation"
+        });
+        const { usage } = await inquirer.prompt({
+            message: questions[3],
+            name: "usage"
+        });
+        const { contribution } = await inquirer.prompt({
+            message: questions[4],
+            name: "contribution"
+        });
+        const { testing } = await inquirer.prompt({
+            message: questions[5],
+            name: "testing"
+        });
+    
+        console.log(title, description, installation, usage, contribution, testing)
 
-    } catch (e) {
-      console.log(e)
+        await writeFileAsync('README.md', title + '\n' + description + '\n' + installation + '\n' + usage + '\n' + contribution + '\n' + testing)
+        await writeFileAsync('README.md', title + '\n' + description + '\n' + installation + '\n' + usage + '\n' + contribution + '\n' + testing)
+
+        1. [ Description. ](#desc)
+        2. [ Usage tips. ](#usage)
+        
+        <a name="desc"></a>
+        ## 1. Description
+        
+        sometext
+        
+        <a name="usage"></a>
+        ## 2. Usage tips
+        
+
+    } catch (err) {
+        // log the error in case something goes wrong
+        console.log(err)
     }
+}
+main()
 
-  });
-
-
-// then async to connect to github API and retrieve data
 
 // Write a new file that appends the following:
 // At least one badge
