@@ -47,19 +47,19 @@ async function main(){
     
         console.log(title, description, installation, usage, contribution, testing)
 
-        await writeFileAsync('README.md', title + '\n' + description + '\n' + installation + '\n' + usage + '\n' + contribution + '\n' + testing)
-        await writeFileAsync('README.md', title + '\n' + description + '\n' + installation + '\n' + usage + '\n' + contribution + '\n' + testing)
+        // await writeFileAsync('README.md', title + '\n' + description + '\n' + installation + '\n' + usage + '\n' + contribution + '\n' + testing)
+        await writeFileAsync('generatedREADME.md', title + '\n' + description + '\n' + installation + '\n' + usage + '\n' + contribution + '\n' + testing)
 
-        1. [ Description. ](#desc)
-        2. [ Usage tips. ](#usage)
+        // 1. [ Description. ](#desc)
+        // 2. [ Usage tips. ](#usage)
         
-        <a name="desc"></a>
-        ## 1. Description
+        // <a name="desc"></a>
+        // ## 1. Description
         
-        sometext
+        // sometext
         
-        <a name="usage"></a>
-        ## 2. Usage tips
+        // <a name="usage"></a>
+        // ## 2. Usage tips
         
 
     } catch (err) {
