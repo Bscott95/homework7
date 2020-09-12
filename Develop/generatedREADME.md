@@ -1,19 +1,9 @@
-// function generateMarkdown(data) {
-//   return `
-// # ${data.title}
 
-// `;
-// }
-
-// module.exports = generateMarkdown;
-
-function generateMarkdown(title, description, installation, usage, license, contribution, testing, username, email) {
-  const readmeText = `
     # Title
-    ${title}
+    areg
     
     ## Description
-    ${description}
+    ythsd
     
     ## Table of Contents
     
@@ -27,35 +17,30 @@ function generateMarkdown(title, description, installation, usage, license, cont
     <a name="installation"></a>
     ## 1. Installation
     
-    ${installation}
+    7i6rtyjgh
 
     <a name="usage"></a>
     ## 2. Usage tips
     
-    ${usage}
+    4weafds
     
     <a name="license"></a>
     ## 3. License
     
-    ${license}
+    6eurtdh
     
     <a name="contributing"></a>
     ## 4. Contributing
     
-    ${contribution}
+    q43tewafds
     
     <a name="Tests"></a>
     ## 5. Tests
     
-    ${testing}
+    6rutyj
     
     <a name="Questions"></a>
     ## 6. Questions
     
-    if you have any questions about the rep, open an issue or contact me directly at ${email}. You can find more of my work at ${username}
-    `
-  return readmeText
-
-}
-
-module.exports = generateMarkdown;
+    if you have any questions about the rep, open an issue or contact me directly at qt43ea. You can find more of my work at r6i7uyfj
+    
