@@ -4,6 +4,7 @@ const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
 const api = require("./utils/api");
 
+// questions that requirer user input
 const questions = [
     "What is the title of your project?",
     "Please describe your project.",
@@ -19,7 +20,7 @@ const questions = [
 // can use for writing files
 const writeFileAsync = util.promisify(fs.writeFile);
 
-// inquirer prompt about username
+// inquirer prompt about username for various values
 async function init(){
     try {
         const { title } = await inquirer.prompt({
@@ -39,7 +40,7 @@ async function init(){
             name: "usage"
         });
         const { license } = await inquirer.prompt({
-            type: "checkbox",
+            type: "list",
             message: questions[4],
             choices:['MIT License','Apache 2.0 License', 'GNU GPL v3'],
             name: "license"
@@ -61,9 +62,7 @@ async function init(){
             name: "username"
         });
     
-        console.log(title, description, installation, usage, license, contribution, testing, username, email)
-        // const avatarURL = api(username);
-        // await api(username)
+        // Depending on the user inputed license value, updates licenseBadge with the correstponding code required for a badge
         let licenseBadge = ''
         if (license === 'MIT License'){
             licenseBadge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
@@ -74,7 +73,11 @@ async function init(){
         } else {
             licenseBadge = ''
         }
-        await writeFileAsync('generatedREADME.md', generateMarkdown(title, licenseBadge, description, installation, usage, license, contribution, testing, username, email, api(username)))
+
+        // console.log(title, description, installation, usage, license, contribution, testing, username, email)
+        
+        // Writes a file called generatedREADME.md using the generateMarkdown function in a tangential file. Passes along the user inputed values and the value of the api function which gets the profile pic url link
+        await writeFileAsync('generatedREADME.md', generateMarkdown(title, licenseBadge, description, installation, usage, license, contribution, testing, username, email, await api(username)))
 
     } catch (err) {
         // log the error in case something goes wrong
@@ -82,4 +85,5 @@ async function init(){
     }
 }
 
+// calls main function
 init();

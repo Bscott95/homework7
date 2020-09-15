@@ -1,9 +1,9 @@
 
-  # Title: Title
-  
+  # Title: Example Title
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
   ## Description
-  des
+  Description
   
   ## Table of Contents
   
@@ -17,12 +17,12 @@
   <a name="installation"></a>
   ## 1. Installation
   
-  inst
+  Intallation instructions
 
   <a name="usage"></a>
   ## 2. Usage tips
   
-  use
+  usage details
   
   <a name="license"></a>
   ## 3. License
@@ -32,17 +32,17 @@
   <a name="contributing"></a>
   ## 4. Contributing
   
-  cont
+  none at the moment
   
   <a name="Tests"></a>
   ## 5. Tests
   
-  test
+  Feel free to fork the files
   
   <a name="Questions"></a>
   ## 6. Questions
   
-  if you have any questions about the rep, open an issue or contact me directly at as. You can find more of my work at Bscott95
+  if you have any questions about the rep, open an issue or contact me directly at Brandon@myemail.com. You can find more of my work at Bscott95
 
-  <img src="[object Promise]" alt="profile picture associated with username">
+  <img src="https://avatars0.githubusercontent.com/u/13577586?v=4" alt="profile picture associated with username">
   
